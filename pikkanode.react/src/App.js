@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import NavbarPikka from './component/NavbarPikka'
-import PhotoPikka from './component/PhotoPikka'
+import Main from './component/Main'
 import FooterPikka from './component/FooterPikka'
 
 class App extends Component {
   render() {
     return (
-      [<NavbarPikka/>,<PhotoPikka/>,<FooterPikka/>]
+      <div>
+        <NavbarPikka/>
+        <Main/>
+        <FooterPikka/>
+      </div> 
     )
   }
 }
