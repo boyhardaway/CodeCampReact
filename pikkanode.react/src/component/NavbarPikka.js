@@ -9,7 +9,7 @@ class NavbarPikka extends Component{
                             <Link to='/'><img src="/photos/pikkanode.png" width="100" height="200"/></Link>
                         </a>
                         <a class="navbar-item">
-                            <Link to='/'>Create Pikka</Link>
+                            <Link to='/createpage'>Create Pikka</Link>
                         </a>
                     </div>
                     <div id="navMenubd-example" class="navbar-menu">
