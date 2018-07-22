@@ -6,11 +6,11 @@ import SignIn from './Auth/SignIn'
 import SignOut from './Auth/SignOut'
 import SignUp from './Auth/SignUp' 
 
-
-const Main = () => (
+const Main = (props) => (
  <Switch>
    <Route path='/' exact component={Home} />
-   <Route path='/signin' component={SignIn} />
+   {/* <Route path='/signin' component={SignIn} /> */}
+   <Route path='/signin' render={() => <SignIn loginPass={props.loginPass} loginNotPass={props.loginNotPass}/>} />
    <Route path='/signup' component={SignUp} />
    <Route path='/signout' component={SignOut} />
    <Route path='/createpage' component={CreatePikka} />

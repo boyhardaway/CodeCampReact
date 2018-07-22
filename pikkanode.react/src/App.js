@@ -10,17 +10,19 @@ class App extends Component {
     isAuth : false
   }
   loginPass = () => {
-    this.setState({ isAuth: true });
+    this.setState(prevState => ({ isAuth: true }));
+    console.log(this.state.isAuth)
   };
 
   loginNotPass = () => {
-    this.setState({ isAuth: false });
+    this.setState(prevState => ({ isAuth: false }));
+    console.log(this.state.isAuth)
   };
 
   render() {
     return (
       <div>
-        <NavbarPikka/>
+        <NavbarPikka />
         <Main loginPass={this.loginPass}
               loginNotPass={this.loginNotPass}
         />

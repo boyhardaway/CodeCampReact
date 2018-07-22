@@ -3,17 +3,16 @@ import Input from './Input'
 class SignIn extends Component{
     state = {
         email: '',
-        password: '',
-        isAuth : false
+        password: '' 
     } 
 
-    loginPass = () => {
-        this.setState({ isAuth: true });
-    }
+    // loginPass = () => {
+    //     this.setState({ isAuth: true });
+    // }
 
-    loginNotPass = () => {
-        this.setState({ isAuth: false });
-    }
+    // loginNotPass = () => {
+    //     this.setState({ isAuth: false });
+    // }
 
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value })
@@ -30,12 +29,16 @@ class SignIn extends Component{
               method: 'post',
               headers: { 'content-type': 'application/json' },
               body: JSON.stringify(bodyData),
-              credentials: 'include'
-              
+              credentials: 'include'              
             })
              
-            response.status == 200 ? this.loginPass():this.loginNotPass()
-            console.log(this.state.isAuth)
+            // response.status == 200 ? this.props.loginPass():this.props.loginNotPass()
+            if (response.status == 200){
+                this.props.loginPass()
+            }else{
+                this.props.loginNotPass()
+            }
+            // console.log(this.state.isAuth)
           }
           catch(err) {
               console.log(err)

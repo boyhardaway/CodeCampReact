@@ -3,77 +3,49 @@ import ButtonLike from './ButtonLike'
 import TextareaComment from './TextareaComment'
 import PictureCard from './PictureCard'
 class PhotoPikka extends Component{
+    state={
+        photos : [],
+        isLoading: true
+    }
 
+    async componentDidMount() {
+        try {
+            const response = await fetch('http://guver.net/api/v1/pikka')
+            const { list } = await response.json()
+            this.setState({ photos: list})
+            console.log(list)
+          } catch (err) {
+            alert(err.message)
+          } finally {
+            setTimeout(() => { this.setState({ isLoading: false }) }, 1000);
+            
+          }
+        
+      }
     render(){
-        return  <div>
-                    <div class="columns">
-                        <div class="column">
-                            {/* <img src="/photos/tent5.jpg" />
-                            <p>2018/10/05</p><ButtonLike/>
-                            <p>Comment</p><TextareaComment/> */}
-                            <PictureCard
-                                myId='0001'
-                                url='/photos/tent3.jpg'
-                                myCreate='Boy'
-                                myDate='2018/07/16 13:54'
-                                myLikeCount={559}
-                                myCommentCount={12} 
-                            />
-                        </div>
-                        <div class="column"> 
+        const { isLoading } = this.state
+        if (isLoading) return <div class="loader"></div>
+        return  (
+            <div> 
+                <div class="columns">
+                { 
+                    this.state.photos.map((val) => 
+                    <div class="column is-one-quarter">
                         <PictureCard
-                                myId='0002'
-                                url='/photos/tent4.jpg'
-                                myCreate='Boy'
-                                myDate='2018/07/16 13:54'
-                                myLikeCount={559}
-                                myCommentCount={12} 
-                            />
-                        </div>
-                        <div class="column"> 
-                            <PictureCard
-                                myId='0003'
-                                url='/photos/tent5.jpg'
-                                myCreate='Boy'
-                                myDate='2018/07/16 13:54'
-                                myLikeCount={559}
-                                myCommentCount={12} 
-                            />
-                        </div>
-                        <div class="column"> 
-                            <PictureCard
-                                myId='0004'
-                                url='/photos/tent8.jpg'
-                                myCreate='Boy'
-                                myDate='2018/07/16 13:54'
-                                myLikeCount={559}
-                                myCommentCount={12} 
-                            />
-                        </div>
+                            myId={val.id}
+                            url={val.picture}
+                            myCreate={val.createdBy}
+                            myDate={val.createdAt}
+                            myLikeCount={999}
+                            myCommentCount={99} 
+                        />
                     </div>
-                    <div class="columns">
-                        <div class="column">
-                            {/* <img src="/photos/tent5.jpg" />
-                            <p>2018/10/05</p><ButtonLike/>
-                            <p>Comment</p><TextareaComment/> */}
-                            <PictureCard
-                                myId='0001'
-                                url='/photos/tent3.jpg'
-                                myCreate='Boy'
-                                myDate='2018/07/16 13:54'
-                                myLikeCount={559}
-                                myCommentCount={12} 
-                            />
-                        </div> 
-                        <div class="column"> 
-                        </div>
-                        <div class="column"> 
-                        </div> 
-                        <div class="column"> 
-                        </div>  
-                    </div>
-                </div> 
+                    ) 
+                }
+                </div>
+            </div>
+        )
     }
 }
-
 export default PhotoPikka
+ 

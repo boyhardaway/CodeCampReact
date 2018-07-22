@@ -19,15 +19,21 @@ class NavbarPikka extends Component{
                                     SignUp/SignIn
                                 </a>
                                 <div class="navbar-dropdown">
+                                <Link to='/signup'>
                                     <a class="navbar-item"> 
-                                        <Link to='/signup'>SignUp</Link>
+                                        signup
                                     </a>
+                                </Link>
+                                <Link to='/signin'>
                                     <a class="navbar-item"> 
-                                        <Link to='/signin'>SignIn</Link>
+                                        SignIn
                                     </a>
+                                </Link>
+                                <Link to='/signout'>
                                     <a class="navbar-item"> 
-                                        <Link to='/signout'>SignOut</Link>
+                                        SignOut
                                     </a>
+                                </Link>
                                 </div>
                             </div>
                         </div>
