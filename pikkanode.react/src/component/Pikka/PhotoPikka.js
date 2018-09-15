@@ -17,7 +17,7 @@ class PhotoPikka extends Component{
           } catch (err) {
             alert(err.message)
           } finally {
-            setTimeout(() => { this.setState({ isLoading: false }) }, 1000);
+            setTimeout(() => { this.setState({ isLoading: false }) }, 500);
             
           }
         
@@ -27,7 +27,7 @@ class PhotoPikka extends Component{
         if (isLoading) return <div class="loader"></div>
         return  (
             <div> 
-                <div class="columns">
+                <div className="columns">
                 { 
                     this.state.photos.map((val) => 
                     <div class="column is-one-quarter">
